@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: Матвей
+Build-Jdk: Oracle OpenJDK 24.0.1
+Implementation-Title: lr1
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: ru.electronics
+Main-Class: ${start-class}
+
