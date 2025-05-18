@@ -18,7 +18,7 @@ public class StoreController {
     public String index() {
         StringBuilder html = new StringBuilder();
         html.append("<html><head>");
-        html.append("<title>ЭльдоРадио</title>");
+        html.append("<title>Магазин электрнонники</title>");
         html.append("<style>");
 
         html.append("body {");
@@ -114,6 +114,7 @@ public class StoreController {
         }
 
         html.append("</table>");
+        html.append("<a href=\"/products\" style=\"display:block; text-align:center; margin-top:30px; font-size:18px;\">Перейти к списку всех товаров</a>");
         html.append("</body></html>");
 
         return html.toString();
@@ -142,4 +143,37 @@ public class StoreController {
             return new RedirectView("/error", true);
         }
     }
+
+    @GetMapping("/products")
+    public String productList() {
+        StringBuilder html = new StringBuilder();
+        html.append("<html><head><title>Все товары</title>");
+        html.append("<style>");
+        html.append("body { font-family: Arial; background-color: #f0f0f0; padding: 20px; }");
+        html.append("table { border-collapse: collapse; width: 100%; }");
+        html.append("th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }");
+        html.append("th { background-color: #e0e0e0; }");
+        html.append("a { display: block; margin-top: 20px; }");
+        html.append("</style></head><body>");
+
+        html.append("<h1>Список всех товаров</h1>");
+        html.append("<table>");
+        html.append("<tr><th>ID</th><th>Брэнд</th><th>Название</th><th>Цена</th></tr>");
+
+        for (Store s : stores) {
+            html.append("<tr>");
+            html.append("<td>").append(s.getId()).append("</td>");
+            html.append("<td>").append(s.getBrand()).append("</td>");
+            html.append("<td>").append(s.getProductName()).append("</td>");
+            html.append("<td>").append(s.getPrice()).append("</td>");
+            html.append("</tr>");
+        }
+
+        html.append("</table>");
+        html.append("<a href=\"/index\">Назад на главную</a>");
+        html.append("</body></html>");
+
+        return html.toString();
+    }
+
 }
